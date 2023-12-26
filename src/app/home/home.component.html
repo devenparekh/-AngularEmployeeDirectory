@@ -1,0 +1,22 @@
+<div *ngIf="!getLogin() else loggedOut" > 
+    <p>Hello {{ name }}! Welcome to HP Infosystem LLC Home Page.</p>
+</div>
+<ng-template #loggedOut>
+    Welcome to HP Infosystem LLC Home Page.
+  </ng-template>
+
+<div *ngIf="getLogin()">
+    <button type="submit" class="btn btn-login float-left" routerLink="/login">Login</button>
+</div>
+<div *ngIf="getLogin()">
+    <button type="submit" class="btn btn-login float-right" routerLink="/register">Register</button>
+</div>
+<div *ngIf="!getLogin()">
+    <button type="submit" class="btn btn-login float-center" (click)="logout()">Logout</button>
+</div>
+<div>
+    <button type="submit" class="btn btn-login float-center" routerLink="/getAllEmployees">GetAllEmployees</button>
+</div>
+<div *ngIf="!getLogin()">
+    <button type="submit" class="btn btn-login float-center" routerLink="/registerEmployee">RegisterEmployee</button>
+</div>
