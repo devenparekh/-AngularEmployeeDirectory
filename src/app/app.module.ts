@@ -17,6 +17,11 @@ import { EmployeeModule } from './employee/employee.module';
 import { AboutModule } from './about/about.module';
 import { ContactModule } from './contact/contact.module';
 import { ProductsModule } from './products/products.module';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,12 @@ import { ProductsModule } from './products/products.module';
     EmployeeModule,
     AboutModule,
     ContactModule,
-    ProductsModule
+    ProductsModule,
+    MatSlideToggleModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatTableModule,
   ],
   providers: [RestapiService, JwtDecodeService,
    ],
