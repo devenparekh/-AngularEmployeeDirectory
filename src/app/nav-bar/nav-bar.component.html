@@ -21,7 +21,9 @@
        
        <div *ngIf="getLogin()">
         <button mat-button type="submit" class="btn btn-login float-left" routerLink="/register">Register</button>
-        <button mat-button type="submit" class="btn btn-login float-left" routerLink="/login">Login</button>
+        <button mat-button type="submit" class="btn btn-login float-left" routerLink="/login">
+          Login
+        </button>
         </div>
         <div *ngIf="!getLogin()">
           <button mat-button type="submit" class="btn btn-login float-center" (click)="logout()">Logout</button>
