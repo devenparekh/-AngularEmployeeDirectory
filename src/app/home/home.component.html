@@ -1,4 +1,4 @@
-<div *ngIf="!getLogin() else loggedOut" > 
+<!-- <div *ngIf="!getLogin() else loggedOut" > 
     <p>Hello {{ name }}! Welcome to HP Infosystem LLC Home Page.</p>
 </div>
 <ng-template #loggedOut>
@@ -11,12 +11,83 @@
 <div *ngIf="getLogin()">
     <button type="submit" class="btn btn-login float-right" routerLink="/register">Register</button>
 </div>
-<div *ngIf="!getLogin()">
-    <button type="submit" class="btn btn-login float-center" (click)="logout()">Logout</button>
-</div>
 <div>
     <button type="submit" class="btn btn-login float-center" routerLink="/getAllEmployees">GetAllEmployees</button>
 </div>
 <div *ngIf="!getLogin()">
     <button type="submit" class="btn btn-login float-center" routerLink="/registerEmployee">RegisterEmployee</button>
-</div>
+</div> -->
+
+
+
+<mat-sidenav-container autosize>
+    <mat-sidenav [opened]="true" mode="side">
+      <mat-nav-list>
+        <a mat-list-item >
+          <span class="entry">
+            <mat-icon>house</mat-icon>
+            <span>Dashboard</span>
+          </span>
+        </a>
+        <div *ngIf= "isLoggedIn" > 
+        <a mat-list-item  routerLink= "/registerEmployee">
+            <span class="entry">
+              <mat-icon>house</mat-icon>
+              <span>New Registration</span>
+            </span>
+        </a>
+        <a mat-list-item  routerLink= "/getAllEmployees">
+          <span class="entry">
+            <mat-icon>house</mat-icon>
+            <span>Employees</span>
+          </span>
+        </a>
+        <a mat-list-item  routerLink= "/getAllEmployees">
+          <span class="entry">
+            <mat-icon>house</mat-icon>
+            <span>Projects</span>
+          </span>
+        </a>
+        <a mat-list-item  routerLink= "/">
+          <span class="entry">
+            <mat-icon>house</mat-icon>
+            <span>Timesheet</span>
+          </span>
+        </a>
+        <a mat-list-item  routerLink= "/">
+          <span class="entry">
+            <mat-icon>house</mat-icon>
+            <span>Billing</span>
+          </span>
+        </a>
+        <a mat-list-item  routerLink= "/">
+          <span class="entry">
+            <mat-icon>house</mat-icon>
+            <span>Designation</span>
+          </span>
+        </a>
+        <a mat-list-item  routerLink= "/">
+          <span class="entry">
+            <mat-icon>house</mat-icon>
+            <span>Vendor</span>
+          </span>
+        </a>
+        <a mat-list-item  routerLink= "/">
+          <span class="entry">
+            <mat-icon>house</mat-icon>
+            <span>Expenses</span>
+          </span>
+        </a>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div *ngIf="!getLogin() else loggedOut" > 
+            <p>Hello {{ name }}! Welcome to HP Infosystem LLC Home Page.</p>
+        </div>
+        <ng-template #loggedOut>
+            Welcome to HP Infosystem LLC Home Page.
+          </ng-template>
+        
+    </mat-sidenav-content>
+  </mat-sidenav-container>

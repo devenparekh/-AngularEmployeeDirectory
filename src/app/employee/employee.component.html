@@ -1,27 +1,124 @@
-<br>
-<p>Inside Employee Component.</p>
+<!-- <mat-sidenav-container>
+  <mat-sidenav>Start</mat-sidenav>
+  <mat-sidenav-content>Main</mat-sidenav-content>
+</mat-sidenav-container> -->
 
-  <div>
-    <h2>Employee List</h2>
-    <table mat-table [dataSource]="employees" class="mat-elevation-z8">
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav [opened]="true" mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink= "/home">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>Home</span>
+        </span>
+      </a>
+      <div *ngIf= "isLoggedIn" > 
+      <a mat-list-item  (click)="allEmpClick()">
+          <span class="entry">
+            <mat-icon>house</mat-icon>
+            <span>List Employees</span>
+          </span>
+      </a>
+      <a mat-list-item  (click)="empidClick()">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>Employee ID</span>
+        </span>
+      </a>
+      <a mat-list-item  (click)="empnameClick()">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>Employee Name</span>
+        </span>
+      </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <br>
+    <h2 style="text-align: center;">Employee Details</h2>
+  <div class="empComp">  
+    <div *ngIf="showContent1">
+      <h2>Employee List</h2>
+      <table mat-table [dataSource]="employees" class="mat-elevation-z8">
+        <ng-container matColumnDef="employeeId">
+          <th mat-header-cell *matHeaderCellDef> Emp ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef> First Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> Last Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef> Address </th>
+          <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="project">
+          <th mat-header-cell *matHeaderCellDef> Project Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.project}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="ssn">
+          <th mat-header-cell *matHeaderCellDef> SSN </th>
+          <td mat-cell *matCellDef="let element"> {{element.ssn}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="joinDate">
+          <th mat-header-cell *matHeaderCellDef>Employee Join Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.joinDate}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Visa Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+      </table>
+      <br><br>
+      <button type="submit" mat-raised-button color="primary" (click)="getAllEmployees1()">getAllEmployees</button>
+    </div>
+   
+  <div  *ngIf="showContent2" style="text-align: center;">
+    <mat-form-field class="example-full-width">
+      <mat-label>Employee ID</mat-label>
+      <input matInput placeholder="0" type="number" [(ngModel)]="empId">
+    </mat-form-field>
+    <br>
+    <button type="submit" mat-raised-button color="primary" (click)="getEmployeesById()">Search</button>
+  <!-- tryout -->
+    <!-- <table mat-table [dataSource]="employees1" class="mat-elevation-z8">
       <ng-container matColumnDef="employeeId">
         <th mat-header-cell *matHeaderCellDef> Emp ID </th>
         <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
       </ng-container>
     
-      <!-- Name Column -->
+     
       <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef> First Name </th>
         <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
       </ng-container>
     
-      <!-- Weight Column -->
+     
       <ng-container matColumnDef="lastName">
         <th mat-header-cell *matHeaderCellDef> Last Name </th>
         <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
       </ng-container>
     
-      <!-- Symbol Column -->
+      
       <ng-container matColumnDef="address">
         <th mat-header-cell *matHeaderCellDef> Address </th>
         <td mat-cell *matCellDef="let element"> {{element.address}} </td>
@@ -49,123 +146,157 @@
     
       <tr mat-header-row *matHeaderRowDef="columns"></tr>
       <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-    </table>
+    </table> -->
+<!-- tryout -->
+
+    <div>
+      <h2>Employee Data</h2>
+      <table align="center" border="1">
+      <thead>
+        <th *ngFor="let column of columns">
+          {{column}}
+        </th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            {{empById}}
+          </td>
+          <td>
+            {{empByFname}}
+          </td>
+          <td>
+            {{empByLname}}
+          </td>
+          <td>
+            {{empByAddress}}
+          </td>
+          <td>
+            {{empByProject}}
+          </td>
+          <td>
+            {{empBySSN}}
+          </td>
+          <td>
+            {{empByJDate}}
+          </td>
+          <td>
+            {{empByStatus}}
+          </td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
   </div>
   <br>
-  <button type="submit" mat-raised-button color="primary" (click)="getAllEmployees1()">getAllEmployees</button>
-  <br>
-     <!-- <table border="1">
-
-  <thead>
-    <th *ngFor="let column of columns">
-      {{column}}
-    </th>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let row of employees; index as i">
-      <td *ngFor="let column of columns; index as j">
-        {{row[column]}}
-      </td>
-    </tr>
-  </tbody>
-
-</table> -->
-
-<br>
-<mat-form-field class="example-full-width">
-  <mat-label>Employee ID</mat-label>
-  <input matInput placeholder="0" type="number" [(ngModel)]="empId">
-</mat-form-field>
-<br>
-<button type="submit" mat-raised-button color="primary" (click)="getEmployeesById()">Get Employee For given ID</button>
-
-  <div>
+  
+  <div *ngIf="showContent3" style="text-align: center;">
+    <!-- <input name = "EmpName" type="text" [(ngModel)]="empName" class="form-control" placeholder="EmployeeName"> -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Employee Name</mat-label>
+      <input matInput placeholder="EmployeeName" type="text" [(ngModel)]="empName">
+    </mat-form-field>
     <br>
-    <h2>Employee Data</h2>
-    <table border="1">
-    <thead>
-      <th *ngFor="let column of columns">
-        {{column}}
-      </th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          {{empById}}
-        </td>
-        <td>
-          {{empByFname}}
-        </td>
-        <td>
-          {{empByLname}}
-        </td>
-        <td>
-          {{empByAddress}}
-        </td>
-        <td>
-          {{empByProject}}
-        </td>
-        <td>
-          {{empBySSN}}
-        </td>
-        <td>
-          {{empByJDate}}
-        </td>
-        <td>
-          {{empByStatus}}
-        </td>
-      </tr>
-    </tbody>
-    </table>
-  </div>
-<br>
-
-  <input name = "EmpName" type="text" [(ngModel)]="empName" class="form-control" placeholder="EmployeeId">
-  <br>
-  <br>
-  <!-- <button type="submit" class="btn btn-login float-center" (click)="getEmployeesByName()">getEmployeeByName</button> -->
-  <button type="submit" mat-raised-button color="primary" (click)="getEmployeesByName()">getEmployeeByName</button>
-  <div>
+    <button type="submit" mat-raised-button color="primary" (click)="getEmployeesByName()">Search</button>
     <br>
-    <h2>Employee Data By Name</h2>
-    <table border="1">
-    <thead>
-      <th *ngFor="let column of columns">
-        {{column}}
-      </th>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          {{empByNameId}}
-        </td>
-        <td>
-          {{empByNameFname}}
-        </td>
-        <td>
-          {{empByNameLname}}
-        </td>
-        <td>
-          {{empByNameAddress}}
-        </td>
-        <td>
-          {{empByNameProject}}
-        </td>
-        <td>
-          {{empByNameSSN}}
-        </td>
-        <td>
-          {{empByNameJDate}}
-        </td>
-        <td>
-          {{empByNameStatus}}
-        </td>
-      </tr>
-    </tbody>
-    </table>
-  </div>
+    <br>
+ <!-- tryout -->
+    <table mat-table [dataSource]="employees1" class="mat-elevation-z8">
+      <ng-container matColumnDef="employeeId">
+        <th mat-header-cell *matHeaderCellDef> Emp ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.employeeId}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+      </ng-container>
+    
+      
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="project">
+        <th mat-header-cell *matHeaderCellDef> Project Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.project}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="ssn">
+        <th mat-header-cell *matHeaderCellDef> SSN </th>
+        <td mat-cell *matCellDef="let element"> {{element.ssn}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="joinDate">
+        <th mat-header-cell *matHeaderCellDef>Employee Join Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.joinDate}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Visa Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table> 
+<!-- tryout -->
 
-  <br>
+
+    <!-- <div>
+      <br>
+      <h2>Employee Data By Name</h2>
+      <table align="center" border="1">
+      <thead>
+        <th *ngFor="let column of columns">
+          {{column}}
+        </th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            {{empByNameId}}
+          </td>
+          <td>
+            {{empByNameFname}}
+          </td>
+          <td>
+            {{empByNameLname}}
+          </td>
+          <td>
+            {{empByNameAddress}}
+          </td>
+          <td>
+            {{empByNameProject}}
+          </td>
+          <td>
+            {{empByNameSSN}}
+          </td>
+          <td>
+            {{empByNameJDate}}
+          </td>
+          <td>
+            {{empByNameStatus}}
+          </td>
+        </tr>
+      </tbody>
+      </table>
+    </div> -->
+  </div>
+    <br>
+</div>
+      
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
 
   

@@ -9,17 +9,19 @@ import { AboutComponent } from './about/about/about.component';
 import { ProductsComponent } from './products/products/products.component';
 import { ContactComponent } from './contact/contact/contact.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
+import { ErrorStatusComponent } from './shared/error-status/error-status.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
   { path: 'home', component:HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterUserComponent },
-  { path: 'product', component: ProductsComponent },
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'registerEmployee', component: AddEmployeeComponent , canActivate:[authGuardGuard] },
-  { path: 'getAllEmployees', component: EmployeeComponent, canActivate:[authGuardGuard] }
+  { path: 'product', component: ProductsComponent, canActivate:[authGuardGuard] },
+  { path: 'about', component: AboutComponent, canActivate:[authGuardGuard] },
+  { path: 'contact', component: ContactComponent, canActivate:[authGuardGuard] },
+  { path: 'registerEmployee', component: AddEmployeeComponent, canActivate:[authGuardGuard] },
+  { path: 'getAllEmployees', component: EmployeeComponent, canActivate:[authGuardGuard] },
+  { path: 'error-status/:status', component: ErrorStatusComponent }
 ];
 
 @NgModule({

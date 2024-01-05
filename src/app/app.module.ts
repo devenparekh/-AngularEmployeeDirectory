@@ -22,6 +22,15 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { GeneralService } from './general.service';
+import { SharedModule } from './shared/shared.module';
+
+
 
 @NgModule({
   declarations: [
@@ -30,7 +39,7 @@ import {MatTableModule} from '@angular/material/table';
     HomeComponent,
     RegisterUserComponent,
     NavBarComponent,
-    EmployeeComponent
+    EmployeeComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,8 +56,14 @@ import {MatTableModule} from '@angular/material/table';
     MatFormFieldModule,
     MatButtonModule,
     MatTableModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    SharedModule
   ],
-  providers: [RestapiService, JwtDecodeService,
+  providers: [RestapiService, JwtDecodeService,GeneralService
    ],
   bootstrap: [AppComponent]
 })

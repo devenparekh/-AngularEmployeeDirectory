@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GeneralService } from '../general.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
- constructor(private router:Router){}
+ constructor(private gService: GeneralService){}
  
   public getLogin(){
     if(localStorage.getItem('isLoggedIn') === "true"){
@@ -19,12 +20,6 @@ export class NavBarComponent {
   }
 
   logout() {
-    localStorage.removeItem('token');
-    localStorage.setItem('isLoggedIn',"false");
-    localStorage.removeItem('Email');
-    localStorage.removeItem('userName');
-    localStorage.removeItem('UserRoles');
-    localStorage.removeItem('ID');
-    this.router.navigate(['/']);
+    this.gService.logout();
   }
 }

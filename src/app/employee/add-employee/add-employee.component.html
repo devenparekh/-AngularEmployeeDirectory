@@ -8,7 +8,6 @@
     <div class="container">
 	<div class="row">
 		<div class="col-md-4 login-sec">
-      <h1 class="text-center">{{frontMessage}}</h1>
 		    <h2 class="text-center">Register Employee</h2>
 		    <form class="login-form">
   <div class="form-group">
@@ -41,9 +40,10 @@
     <input name = "Status" type="text" [(ngModel)]="registerdEmployee.status" class="form-control" placeholder="Visa Status">
   </div>
 
+  <h1 class="text-center">{{frontMessage}}</h1>
+
   <div class="form-check">
     <button type="submit" class="btn btn-login float-left" (click)="registerEmployee()">Register Employee</button>
-    <button type="submit" class="btn btn-login float-left" routerLink="/home">Home</button>
   </div>
   
 </form>

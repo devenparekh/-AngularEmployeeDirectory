@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtDecodeService } from '../jwt-decode.service';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +9,24 @@ import { JwtDecodeService } from '../jwt-decode.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  title = 'material-responsive-sidenav';
+  @ViewChild(MatSidenav)
+  sidenav!: MatSidenav;
+
   token: any;
   name: any;
+  isLoggedIn:any;
 
   constructor(private router: Router, private jwtService:JwtDecodeService){
+   
     if(localStorage.getItem('isLoggedIn') === "true"){
       console.log("Inside home constructor.");
       this.getClaims();
+      this.isLoggedIn = localStorage.getItem('isLoggedIn');
     }
   }
   ngOnInit(){
+   
   }
 
   public getLogin(){
@@ -44,6 +53,9 @@ export class HomeComponent {
     const id = decodedToken['ID'];
     console.log('ID:', id);
     localStorage.setItem('ID',id);
+    const exp = decodedToken['exp'];
+    console.log('exp:', exp);
+    localStorage.setItem('exp',exp);
   }
 
 
@@ -54,6 +66,18 @@ export class HomeComponent {
     localStorage.removeItem('userName');
     localStorage.removeItem('UserRoles');
     localStorage.removeItem('ID');
+    localStorage.removeItem('exp');
     this.router.navigate(['/']);
   }
+
+ 
+  // toggleMenu() {
+  //   if(this.isMobile){
+  //     this.sidenav.toggle();
+  //     this.isCollapsed = false; // On mobile, the menu can never be collapsed
+  //   } else {
+  //     this.sidenav.open(); // On desktop/tablet, the menu can never be fully closed
+  //     this.isCollapsed = !this.isCollapsed;
+  //   }
+  // }
 }

@@ -1,22 +1,29 @@
-<nav class="navbar">
-    <div class="navbar-logo">
-      <img src="assets/logo.png" alt="My App Logo" />
-    </div>
-    <ul class="navbar-links">
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/about">About</a></li>
-  <li><a routerLink="/about">Services</a></li>
-  <li><a routerLink="/product">Products</a></li>
-      <li><a routerLink="/contact">Contact</a></li>
-    </ul>
-    <div class="navbar-actions">
-      <!-- Add login/logout buttons or user-related actions here -->
-      <div *ngIf="getLogin()">
-      <button type="submit" class="btn btn-login float-left" routerLink="/register">Register</button>
-      <button type="submit" class="btn btn-login float-left" routerLink="/login">Login</button>
+
+    <mat-toolbar color="primary">
+      <div class="navbar-logo">
+        <img src="assets/HP-logo.png" alt="My App Logo" />
+        
       </div>
-      <div *ngIf="!getLogin()">
-        <button type="submit" class="btn btn-login float-center" (click)="logout()">Logout</button>
-    </div>
-    </div>
-  </nav>
+         
+      
+      <!-- <span>HP Infosystems</span> -->
+      <div class="spacer"></div>
+       <a mat-button type="submit" routerLink="/" >Home</a>
+       <a mat-button type="submit" routerLink="/product">Products</a>
+       <!-- <button mat-button [matMenuTriggerFor]="menu">Product</button> -->
+       <!-- <mat-menu #menu="matMenu">
+        <button mat-menu-item></button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu> -->
+       <a mat-button type="submit" routerLink="/about">Services</a>
+       <a mat-button type="submit" routerLink="/about">About</a>
+       <a mat-button type="submit" routerLink="/contact">Contact</a>
+       
+       <div *ngIf="getLogin()">
+        <button mat-button type="submit" class="btn btn-login float-left" routerLink="/register">Register</button>
+        <button mat-button type="submit" class="btn btn-login float-left" routerLink="/login">Login</button>
+        </div>
+        <div *ngIf="!getLogin()">
+          <button mat-button type="submit" class="btn btn-login float-center" (click)="logout()">Logout</button>
+      </div>
+    </mat-toolbar>
