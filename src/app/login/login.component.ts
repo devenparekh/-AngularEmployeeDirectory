@@ -30,10 +30,10 @@ export class LoginComponent implements OnInit{
       next:(data) =>{
           this.message=data;
           console.log("JWT Token received:" + this.message);
-          localStorage.setItem('token',this.message);
+          sessionStorage.setItem('token',this.message);
           this.isLoggedIn === true;
           localStorage.setItem('isLoggedIn',"true");
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
       },
       error:(error:HttpErrorResponse) => {
         this.errorMessage = error.message;
@@ -65,23 +65,6 @@ export class LoginComponent implements OnInit{
       localStorage.setItem('isLoggedIn',"false");
       this.isLoggedIn = false;
       }       
-      
-      //     (data)=>{
-  //   this.message=data;
-  //   console.log("JWT Token received:" + this.message);
-  //   localStorage.setItem('token',this.message);
-  //   this.isLoggedIn === true;
-  //   localStorage.setItem('isLoggedIn',"true");
-  //   this.router.navigate(['/']);
-  // },
-      // (    error: { message: any; }) =>{
-      // this.errorMessage = error.message;
-      // console.log("Error Occurred: " + this.errorMessage);
-      // if(error.message === 0){
-      //   window.alert("Server is Down. Try Again Later.");
-      // }
-      // localStorage.setItem('isLoggedIn',"false");
-      // this.isLoggedIn = false;
     });
   }
 }

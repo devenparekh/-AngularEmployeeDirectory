@@ -1,25 +1,3 @@
-<!-- <div *ngIf="!getLogin() else loggedOut" > 
-    <p>Hello {{ name }}! Welcome to HP Infosystem LLC Home Page.</p>
-</div>
-<ng-template #loggedOut>
-    Welcome to HP Infosystem LLC Home Page.
-  </ng-template>
-
-<div *ngIf="getLogin()">
-    <button type="submit" class="btn btn-login float-left" routerLink="/login">Login</button>
-</div>
-<div *ngIf="getLogin()">
-    <button type="submit" class="btn btn-login float-right" routerLink="/register">Register</button>
-</div>
-<div>
-    <button type="submit" class="btn btn-login float-center" routerLink="/getAllEmployees">GetAllEmployees</button>
-</div>
-<div *ngIf="!getLogin()">
-    <button type="submit" class="btn btn-login float-center" routerLink="/registerEmployee">RegisterEmployee</button>
-</div> -->
-
-
-
 <mat-sidenav-container autosize>
     <mat-sidenav [opened]="true" mode="side">
       <mat-nav-list>
@@ -82,14 +60,8 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div *ngIf="!getLogin() else loggedOut" style="padding: 2%; text-align: center;"> 
+        <div style="padding: 2%; text-align: center;"> 
             <p>Hello {{ name }}! Welcome to HP Infosystem</p>
         </div>
-        <ng-template #loggedOut >
-          <div style="padding: 2%; text-align: center;">
-            Welcome to HP Infosystem LLC Home Page.
-          </div>
-        </ng-template>
-        
     </mat-sidenav-content>
   </mat-sidenav-container>

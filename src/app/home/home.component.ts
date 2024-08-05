@@ -39,7 +39,7 @@ export class HomeComponent {
   }
 
   public getClaims(){
-    this.token = localStorage.getItem('token');
+    this.token = sessionStorage.getItem('token');
     const decodedToken = this.jwtService.deCodeToken(this.token);
     const userEmail = decodedToken['email'];
     console.log('User Email:', userEmail);

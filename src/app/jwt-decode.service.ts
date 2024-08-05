@@ -16,8 +16,8 @@ export class JwtDecodeService {
   }
 
   public isAuthenticated(): boolean {
-    console.log (localStorage['token']);
-    const token = localStorage.getItem('token');
+    console.log (sessionStorage['token']);
+    const token = sessionStorage.getItem('token');
     // Check wheter the token is expired and return true or false
     return !this.jwtHelper.isTokenExpired(token);
   }

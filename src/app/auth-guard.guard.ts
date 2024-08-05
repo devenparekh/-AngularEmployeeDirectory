@@ -8,14 +8,6 @@ export const authGuardGuard: CanActivateFn = (route:ActivatedRouteSnapshot, stat
   const authService = inject(JwtDecodeService);
   const gService = inject(GeneralService);
 
-
-  // if(localStorage.getItem('token')){
-  //   return true;
-  // }
-  // else{
-  //   router.navigate(['/']);
-  //   return false;
-  // }
   if (!authService.isAuthenticated()){
     console.log ('logged Out.');
 

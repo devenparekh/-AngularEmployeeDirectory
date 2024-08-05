@@ -16,11 +16,11 @@ export class Requestinterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log("inside interceptor.");
 
-    if(localStorage.getItem('token') === null){
+    if(sessionStorage.getItem('token') === null){
       return next.handle(request);
     }
     else{
-      this.currentUser = localStorage.getItem('token');
+      this.currentUser = sessionStorage.getItem('token');
       const modifiedReq = request.clone({
         headers: request.headers.set('Authorization',"Bearer "+this.currentUser)
       });

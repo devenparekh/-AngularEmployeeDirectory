@@ -4,11 +4,13 @@
         <img src="assets/HP-logo.png" alt="My App Logo" />
         
       </div>
-         
-      
-      <!-- <span>HP Infosystems</span> -->
       <div class="spacer"></div>
+        <div *ngIf="getLogin()">
        <a mat-button type="submit" routerLink="/" >Home</a>
+        </div>
+        <div *ngIf="!getLogin()">
+          <a mat-button type="submit" routerLink="/home" >Home</a>
+           </div>
        <a mat-button type="submit" routerLink="/product">Products</a>
        <!-- <button mat-button [matMenuTriggerFor]="menu">Product</button> -->
        <!-- <mat-menu #menu="matMenu">

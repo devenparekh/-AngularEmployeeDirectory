@@ -29,6 +29,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { GeneralService } from './general.service';
 import { SharedModule } from './shared/shared.module';
+import { GeneralComponent } from './general/general.component';
 
 
 
@@ -40,6 +41,7 @@ import { SharedModule } from './shared/shared.module';
     RegisterUserComponent,
     NavBarComponent,
     EmployeeComponent,
+    GeneralComponent,
   ],
   imports: [
     BrowserModule,

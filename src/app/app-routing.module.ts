@@ -10,10 +10,11 @@ import { ProductsComponent } from './products/products/products.component';
 import { ContactComponent } from './contact/contact/contact.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
 import { ErrorStatusComponent } from './shared/error-status/error-status.component';
+import { GeneralComponent } from './general/general.component';
 
 const routes: Routes = [
-  { path: '', redirectTo:'home', pathMatch:'full' },
-  { path: 'home', component:HomeComponent },
+  { path: '', component:GeneralComponent },
+  { path: 'home', component:HomeComponent, canActivate:[authGuardGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterUserComponent },
   { path: 'product', component: ProductsComponent, canActivate:[authGuardGuard] },
