@@ -9,7 +9,7 @@
             </div>
             <div class="contant_box" *ngFor="let error of errorStatus">
               <h3>{{error.content }}</h3>
-              <a routerLink="" class="link">
+              <a routerLink="" (click)="goBack()" class="link">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i> Go to Home
               </a>
             </div>

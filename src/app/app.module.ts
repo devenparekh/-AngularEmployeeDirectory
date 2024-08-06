@@ -30,6 +30,8 @@ import { MatListModule } from '@angular/material/list';
 import { GeneralService } from './general.service';
 import { SharedModule } from './shared/shared.module';
 import { GeneralComponent } from './general/general.component';
+import { EncryptionServiceService } from './encryption-service.service';
+import { ProductsComponent } from './products/products/products.component';
 
 
 
@@ -42,6 +44,7 @@ import { GeneralComponent } from './general/general.component';
     NavBarComponent,
     EmployeeComponent,
     GeneralComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,7 @@ import { GeneralComponent } from './general/general.component';
     MatListModule,
     SharedModule
   ],
-  providers: [RestapiService, JwtDecodeService,GeneralService
+  providers: [RestapiService, JwtDecodeService,GeneralService,EncryptionServiceService
    ],
   bootstrap: [AppComponent]
 })

@@ -17,6 +17,7 @@ export class Requestinterceptor implements HttpInterceptor {
     console.log("inside interceptor.");
 
     if(sessionStorage.getItem('token') === null){
+      console.log("token null");
       return next.handle(request);
     }
     else{

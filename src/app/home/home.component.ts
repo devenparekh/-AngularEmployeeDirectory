@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtDecodeService } from '../jwt-decode.service';
 import { MatSidenav } from '@angular/material/sidenav';
+import { EncryptionServiceService } from '../encryption-service.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomeComponent {
   name: any;
   isLoggedIn:any;
 
-  constructor(private router: Router, private jwtService:JwtDecodeService){
+  constructor(private router: Router, private jwtService:JwtDecodeService, private encryptionService: EncryptionServiceService){
    
     if(localStorage.getItem('isLoggedIn') === "true"){
       console.log("Inside home constructor.");
@@ -42,19 +43,15 @@ export class HomeComponent {
     this.token = sessionStorage.getItem('token');
     const decodedToken = this.jwtService.deCodeToken(this.token);
     const userEmail = decodedToken['email'];
-    console.log('User Email:', userEmail);
-    localStorage.setItem('Email',userEmail);
+    localStorage.setItem('Email',this.encryptionService.encrypt(userEmail));
     this.name = decodedToken['sub'];
+    localStorage.setItem('userName',this.encryptionService.encrypt(this.name));
     console.log('User Name:', this.name);
-    localStorage.setItem('userName',this.name);
     const roles = decodedToken['roles'];
-    console.log('UserRoles:', roles);
-    localStorage.setItem('UserRoles',roles);
+    localStorage.setItem('UserRoles',this.encryptionService.encrypt(roles));
     const id = decodedToken['ID'];
-    console.log('ID:', id);
     localStorage.setItem('ID',id);
     const exp = decodedToken['exp'];
-    console.log('exp:', exp);
     localStorage.setItem('exp',exp);
   }
 
@@ -67,6 +64,7 @@ export class HomeComponent {
     localStorage.removeItem('UserRoles');
     localStorage.removeItem('ID');
     localStorage.removeItem('exp');
+    localStorage.clear();
     this.router.navigate(['/']);
   }
 

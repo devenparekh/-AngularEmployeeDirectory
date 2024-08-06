@@ -59,7 +59,6 @@ export class EmployeeComponent {
     this.service.getAllEmployees().subscribe({
       next: (data) => {
         this.employees = data;
-        console.log('Response: ' + this.employees);
       },
       error: (error:HttpErrorResponse) => {
         console.error('Error fetching employees: ', error);
@@ -98,14 +97,6 @@ export class EmployeeComponent {
     this.service.getEmployeeById(this.empId).subscribe({
       next: (data: any) => {       
         this.employees2 = data;
-        // this.empById = <GetEmployee>data.employeeId;
-        // this.empByFname = <GetEmployee>data.firstName;
-        // this.empByLname = <GetEmployee>data.lastName;
-        // this.empByAddress = <GetEmployee>data.address;
-        // this.empByProject = <GetEmployee>data.project;
-        // this.empBySSN = <GetEmployee>data.ssn;
-        // this.empByJDate = <GetEmployee>data.joinDate;
-        // this.empByStatus = <GetEmployee>data.status;
         console.log('Response: ' + this.employees2);
       },
       error: (error: HttpErrorResponse) => {
@@ -145,7 +136,6 @@ export class EmployeeComponent {
       next: (data: any) => {
         this.employees1 = data;
         console.log(typeof data);
-        console.log('Response: ' + this.empName);
       },
       error: (error: HttpErrorResponse) => {
         console.error('Error fetching employees: ', error);
